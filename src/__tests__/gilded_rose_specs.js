@@ -24,6 +24,14 @@ const cloneDeep = function (data) {
 
 describe("Glided Rose", () => {
 
+    test('should decrease Conjured Items quality twice as fast', () => {
+        const GildedRose = new Shop([new Item('Conjured Item', 5, 10, true)]);
+        const items = GildedRose.updateQuality();
+        const cake = items.shift();
+        expect(cake.quality).toEqual(8);
+        expect(cake.sellIn).toEqual(4);
+    });
+
     test('aged brie should increase in quality the older it gets', () => {
         const GildedRose = new Shop([new Item("Aged Brie", 3, 1)]);
         const items = GildedRose.updateQuality();
@@ -53,6 +61,7 @@ describe("Glided Rose", () => {
         const items = GildedRose.updateQuality();
         expect(items[0].quality).toEqual(80);
     });
+    
     test('should not degrade Item quality below zero', () => {
         const gildedRose = new Shop([new Item('foo', 0, 0)]);
         const items = gildedRose.updateQuality();
