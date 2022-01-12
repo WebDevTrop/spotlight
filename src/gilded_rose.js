@@ -13,7 +13,12 @@ export class Shop {
   updateQuality() {
     this.items.forEach(item => {
       // ^^ loops through the items
-      if (item.name != 'Aged Brie' && item.name != 'Backstage passes to a TAFKAL80ETC concert' && item.quality > 0 && item.name != 'Sulfuras, Hand of Ragnaros') {
+      if (
+        item.name != 'Aged Brie'
+        && item.name != 'Backstage passes to a TAFKAL80ETC concert'
+        && item.quality > 0
+        && item.name != 'Sulfuras, Hand of Ragnaros'
+      ) {
         // ^^ if the current item's name is not:
         /*
         'Aged Brie',
@@ -40,12 +45,12 @@ export class Shop {
       }
       if (item.sellIn < 0) {
         if (item.name != 'Aged Brie') {
-          if (item.name != 'Backstage passes to a TAFKAL80ETC concert') {
-            if (item.quality > 0) {
-              if (item.name != 'Sulfuras, Hand of Ragnaros') {
-                item.quality = item.quality - 1;
-              }
-            }
+          if (
+            item.name != 'Backstage passes to a TAFKAL80ETC concert'
+            && item.quality > 0
+            && item.name != 'Sulfuras, Hand of Ragnaros'
+          ) {
+              item.quality = item.quality - 1;
           } else {
             item.quality = item.quality - item.quality;
           }
